@@ -319,9 +319,10 @@ def decryption():
 print("Playfair Encryption Tool (P.E.T)")
 print("Written By: Sahaja Naredla")
 print()
+print("***********************************************")
 print("Dear user, please enter your option")
 print("1, for Encryption, 2 for Decryption, 3 for exit")
-
+print("***********************************************")
 option = input("Enter your option here:")
 if option == '1':
     encryption()
