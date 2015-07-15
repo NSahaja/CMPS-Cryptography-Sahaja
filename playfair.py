@@ -24,7 +24,7 @@ class StringManip:
         return alphabet
 
 
-    def cleanString(self,s,options = {'up':1,'reNonAlphaNum':1,'reSpaces':'_','spLetters':'X'}):
+    def cleanString(self,s,options = {'up':1,'reNonAlphaNum':1,'reSpaces':'','spLetters':'X','reDupes':1,'reDigits':1}):
         """
         Cleans message by doing the following:
         - up            - uppercase letters
@@ -52,6 +52,9 @@ class StringManip:
 
         if 'reDupes' in options:
             s= ''.join(sorted(set(s), key=s.index))
+            
+        if 'reDigits' in options:
+            s = ''.join([i for i in s if not i.isdigit()])
 
         return s
 
@@ -77,7 +80,7 @@ class PlayFair:
         self.generateSquare()
         self.transposeSquare()
 
-        self.Message = self.StrMan.cleanString(self.Message,{'up':1,'reSpaces':'','reNonAlphaNum':1,'spLetters':1})
+        self.Message = self.StrMan.cleanString(self.Message,{'up':1,'reSpaces':'','reNonAlphaNum':1,'spLetters':1,'reDupes':1,'reDigits':1})
         print(message)
 
     def generateSquare(self):
@@ -96,7 +99,7 @@ class PlayFair:
         self.Alphabet = self.StrMan.generateAlphabet()
 
         #uppercase key (it meay be read from stdin, so we need to be sure)
-        self.Key = self.StrMan.cleanString(self.Key,{'up':1,'reSpaces':'','reNonAlphaNum':1,'reDupes':1})
+        self.Key = self.StrMan.cleanString(self.Key,{'up':1,'reSpaces':'','reNonAlphaNum':1,'reDupes':1,'reDigits':1})
 
         #Load keyword into square
         for i in range(len(self.Key)):
@@ -258,8 +261,8 @@ def encryption():
     
 #string manipulations
     strmanip = StringManip()
-    message = strmanip.cleanString(message,options = {'up':1,'reNonAlphaNum':1,'reSpaces':'','spLetters':'X'})
-    key = strmanip.cleanString(key,options = {'up':1,'reNonAlphaNum':1,'reSpaces':'','spLetters':'X'})
+    message = strmanip.cleanString(message,options = {'up':1,'reNonAlphaNum':1,'reSpaces':'','spLetters':'X','reDigits':1})
+    key = strmanip.cleanString(key,options = {'up':1,'reNonAlphaNum':1,'reSpaces':'','reDupes':1,'reDigits':1})
     
     print()
     print("Your key is ", key)
@@ -293,8 +296,8 @@ def decryption():
     myCipher.printTransposedSquare()
     
     strmanip = StringManip()
-    message = strmanip.cleanString(message,options = {'up':1,'reNonAlphaNum':1,'reSpaces':'','spLetters':'X'})
-    key = strmanip.cleanString(key,options = {'up':1,'reNonAlphaNum':1,'reSpaces':'','spLetters':'X'})
+    message = strmanip.cleanString(message,options = {'up':1,'reNonAlphaNum':1,'reSpaces':'','spLetters':'X','reDigits':1})
+    key = strmanip.cleanString(key,options = {'up':1,'reNonAlphaNum':1,'reSpaces':'','reDupes':1,'reDigits':1})
     
     print("Your key is ", key)
     print("Your cipher text is", message)
@@ -331,6 +334,5 @@ if option == '2':
 if option == '3':
     print("BYE")
     
-
 
 
