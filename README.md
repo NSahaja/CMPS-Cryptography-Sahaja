@@ -1,2 +1,8 @@
 # CMPS-Cryptography-Sahaja
-This is my repo.
+
+Sahaja Reddy Naredla
+
+sahajareddynaredla@gmail.com
+
+
+
