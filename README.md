@@ -1,4 +1,4 @@
-# CMPS-Cryptography-Sahaja
+# CMPS-5363-Cryptography-Sahaja
 
 Sahaja Reddy Naredla
 
